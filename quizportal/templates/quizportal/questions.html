@@ -274,9 +274,12 @@
 
 			function endsection() {
 				section="{{section_no}}" ;
-				alert("Are You Sure You Want To End The Section"+" "+section+" "+"??");
-				section="http://127.0.0.1:8000/endSection/" + section ;
-				window.location.href = section ;
+				//alert("Are You Sure You Want To End The Section"+" "+section+" "+"??");
+				
+				if (confirm("Are You Sure You Want To End The Section"+" "+section+" "+"??")) {
+					section="http://127.0.0.1:8000/endSection/" + section ;
+					window.location.href = section ;
+				}
 			}
 
 			
