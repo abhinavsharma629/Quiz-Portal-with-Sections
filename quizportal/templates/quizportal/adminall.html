@@ -1,0 +1,49 @@
+{% extends 'adminbase.html' %}
+{% block body %}
+<div class="container" style="justify-content:center; margin-top:10%;">
+	<div class="container text-center">
+		<div class="container text-center">
+			<div class="page-header">
+				<h1><b>Details Of All Users</b></h1>
+			</div>
+			<br><br>
+			<table class="table table-bordered table-dark">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Enrollment Number</th>
+						<th scope="col">Section1 Score</th>
+						<th scope="col">Section2 Score</th>
+						<th scope="col">Section3 Score</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i,j in allusers.items %}
+					<tr>
+						<td><b>{{ forloop.counter }}</b></th>
+							<td><b>{{i}}</b></td>
+							{% for k in j %}
+							<td><b>{{k}}</b></td>
+							{% endfor %}
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+				<br>
+			</div>
+			<div class="container">
+				<a href="{% url 'DownloadUserData' %}"><button class="btn btn-default">
+						<b>Download File</b>
+					</button></a>
+			</div>
+			<br>
+			<b>
+				<div class="text-center p-t-40" style="font-size: 20px;">
+					Developer :- Abhinav Sharma
+					<a href="https://www.facebook.com/abhinav.sharma.16906" class="fa fa-facebook"></a>
+				</div>
+			</b>
+		</div>
+	</div>
+	{% endblock %}

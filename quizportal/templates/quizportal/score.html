@@ -1,0 +1,50 @@
+{% extends 'base1.html' %}
+{% block body %}
+<div class="container" style="justify-content:center; margin-top:10%;">
+	<div class="container text-center">
+		<div class="container text-center">
+			<div class="page-header">
+				<h1><b>Quiz is On!!</b></h1>
+			</div>
+			<br><br>
+			{% for i in id %}
+			<div class="page-header">
+				<h2><b>{{i.username}} Your Score :- </b></h2>
+			</div>
+			</div>
+			<table class="table table-bordered table-dark">
+				<thead>
+					<tr>
+						<th scope="col">Section Number#</th>
+						<th scope="col">Scores</th>
+					</tr>
+				{% endfor %}
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{section_no}}</td>
+						<td>{{score}}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<br><br>
+			<div class="container">
+				<h5><b>Keep It Up!! Keep Giving The Quiz</b></h5>
+			</div>
+			<br>
+			<div class="container">
+				<a href="/detail/Section/{{section_no}}/{{id_no}}"><button class="btn btn-default">
+						<b>Back</b>
+					</button></a>
+			</div>
+		</div>
+		</div>
+		<br><br><br><br><br>
+		<b>
+			<div class="text-center p-t-40" style="font-size: 15px;">
+				Developer :- Abhinav Sharma
+				<a href="https://www.facebook.com/abhinav.sharma.16906" class="fa fa-facebook"></a>
+			</div>
+		</b>
+{% endblock %}
