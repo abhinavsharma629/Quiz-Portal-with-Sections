@@ -136,6 +136,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 '''
 MEDIA_URL='/media/'
 
@@ -144,4 +146,4 @@ MEDIA_ROOT=os.path.join(BASE_DIR, "static_cdn", "media_root")'''
 CRISPY_TEMPLATE_PACK = "bootstrap3"
 
 LOGIN_REDIRECT_URL = '/detail/Section/1/1'
-LOGOUT_REDIRECT_URL = "http://127.0.0.1:8000/"
+LOGOUT_REDIRECT_URL = "/"

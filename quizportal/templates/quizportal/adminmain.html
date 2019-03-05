@@ -8,44 +8,167 @@
 			</div>
 			<br><br>
 			<div class="container">
-				<a href="/adminall"><button class="btn btn-default">
-						<b>All User Scores</b>
-					</button></a>
+				<a href="/adminall">
+					<button class="btn btn-default" style='margin-right:16px'>
+						<b>Score Of All Users</b>
+					</button>
+				</a>
+				<a href="/regis">
+					<button class="btn btn-default" style='margin-left:16px'>
+						<b>Register Users Manually</b>
+					</button>
+				</a>
 			</div>
 			<br>
-			<div class="container">
-				<a href="/admincsvupload/1"><button class="btn btn-default">
-						<b>Upload Questions Section 1(CSV File)</b>
-					</button></a>
-			</div>
-			<br>
-			<div class="container">
-				<a href="/admincsvupload/2"><button class="btn btn-default">
-						<b>Upload Questions Section 2(CSV File)</b>
-					</button></a>
-			</div>
-			<br>
-			<div class="container">
-				<a href="/admincsvupload/3"><button class="btn btn-default">
-						<b>Upload Questions Section 3(CSV File)</b>
-					</button></a>
-			</div>
-			<br>
-			
 		</div>
-		<br>
-		<div class="container">
-			<a href="/logout"><button class="button">
-					<b>Logout</b>
-				</button></a>
-		</div>
-		<br><br><br><br>
-		<b>
-			<div class="text-center p-t-40" style="font-size: 20px;">
-				Developer :- Abhinav Sharma
-				<a href="https://www.facebook.com/abhinav.sharma.16906" class="fa fa-facebook"></a>
-			</div>
-		</b>
 	</div>
 </div>
+<div class="col-xs-15">
+	<table class="table table-bordered table-dark table-condensed" align="center">
+		<thead>
+			<tr>
+				<th scope="col">S No.</th>
+				<th scope="col">Section Questions(CSV File)</th>
+				<th scope="col">Timely Division</th>
+				<th scope="col">Delete Questions</th>
+				<th scope="col">Delete Time of User</th>
+				<th scope="col">Delete Sec. End Time</th>
+				<th scope="col">Delete Solved Users</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<!-- Section 1 -->
+			<tr>
+				<td align="center">1</td>
+				<td align="center">
+					<a href="/admincsvupload/1"><button class="btn btn-default">
+						<b>Section 1</b>
+					</button></a>
+				</td>
+				<td align="center">
+					<a href="/admintimeupload/1"><button class="btn btn-default">
+						<b>Section 1</b>
+					</button></a>
+				</td>
+				<td align="center">
+					<button onclick="myFunction(2)" class="btn btn-default">
+						<b>Section 1</b>
+					</button>
+				</td>
+				<td align="center">
+					<button onclick="myFunction(5)" class="btn btn-default">
+						<b>Section 1</b>
+					</button>
+				</td>
+				<td rowspan="3" align="center">
+					<button onclick="myFunction(8)" class="btn btn-default">
+						<b>All Sections</b>
+					</button>
+				</td>
+				<td align="center">
+					<button onclick="myFunction(9)" class="btn btn-default">
+						<b>Sections 1</b>
+					</button>
+				</td>
+			</tr>
+
+			<!-- Section 2 -->
+			<tr>
+				<td align="center">2</td>
+				<td align="center">
+					<a href="/admincsvupload/2"><button class="btn btn-default">
+						<b>Section 2</b>
+					</button></a>
+				</td>
+				<td align="center">
+					<a href="/admintimeupload/2"><button class="btn btn-default">
+						<b>Section 2</b>
+					</button></a>
+				</td>
+				<td align="center">
+					<button onclick="myFunction(3)" class="btn btn-default">
+						<b>Section 2</b>
+					</button>
+				</td>
+				<td align="center">
+					<button onclick="myFunction(6)" class="btn btn-default">
+						<b>Section 2</b>
+					</button>
+				</td>
+				<td align="center">
+					<button onclick="myFunction(10)" class="btn btn-default">
+						<b>Sections 2</b>
+					</button>
+				</td>
+			</tr>
+
+			<!-- Section 3 -->
+			<tr>
+				<td align="center">3</td>
+				<td align="center">
+					<a href="/admincsvupload/3"><button class="btn btn-default">
+						<b>Section 3</b>
+					</button></a>
+				</td>
+				<td align="center">
+					<a href="/admintimeupload/3"><button class="btn btn-default">
+						<b>Section 3</b>
+					</button></a>
+				</td>
+				<td align="center">
+					<button onclick="myFunction(4)"" class="btn btn-default">
+						<b>Section 3</b>
+					</button>
+				</td>
+				<td align="center">
+					<button onclick="myFunction(7)" class="btn btn-default">
+						<b>Section 3</b>
+					</button>
+				</td>
+				<td align="center">
+					<button onclick="myFunction(11)" class="btn btn-default">
+						<b>Sections 3</b>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<br>
+<div class="container">
+	<a href="/logout"><button class="button">
+		<b>Logout</b>
+	</button></a>
+</div>
+
+<br>
+<b>
+	<div class="text-center p-t-40" style="font-size: 20px;">
+		Developer :- Abhinav Sharma
+		<a href="https://www.facebook.com/abhinav.sharma.16906" class="fa fa-facebook"></a>
+	</div>
+</b>
+<script type="text/javascript">
+
+	function myFunction(event)
+	{
+		console.log("hi");
+		if(confirm("Are You Sure You Want To Delete It!! Your Data Will Be Permanently Lost"))
+		{
+			window.location.href="/admindelete/"+String(event);
+		}
+		
+	}
+	message="{{message}}"
+	console.log(message)
+	if(message.length > 0)
+	{
+		alert("Successfully Deleted");
+		window.location.href="/adminmain";
+	}
+
+	
+</script>
 {% endblock %}

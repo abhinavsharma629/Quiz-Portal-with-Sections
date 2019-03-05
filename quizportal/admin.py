@@ -15,3 +15,5 @@ admin.site.register(SolvedQ2)
 admin.site.register(Section3)
 admin.site.register(Time3)
 admin.site.register(SolvedQ3)
+
+admin.site.register(Time)

@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-	<title>Login</title>
+	<title>Upload Questions</title>
 	<SCRIPT type="text/javascript">
 		function preventBack() { window.history.forward(); }
 		setTimeout("preventBack()", 0);
@@ -39,18 +39,18 @@
 </head>
 
 <body>
-
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('static/quizportal/images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form method="POST" action="">
+				<form method="POST" action="" enctype="multipart/form-data">
 					{% csrf_token %}
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
+						<b>Hello ADMIN</b><br><br>
+						CSV File For <b>Registering Users</b>
 					</span>
 
 					<div class="container">
@@ -59,17 +59,10 @@
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Login
+							<b>Upload File</b>
 						</button>
 					</div>
-					<!-- <b>
-						<div class="text-center p-t-30">
-							<a class="txt1" href="/register">
-								Register
-							</a>
-						</div>
-					</b>
- -->
+					<br>
 					<b>
 						<div class="text-center p-t-40" style="font-size: 15px;">
 							Developer :- Abhinav Sharma
@@ -80,27 +73,6 @@
 			</div>
 		</div>
 	</div>
-
-
-	<div id="dropDownSelect1"></div>
-
-	<!--===============================================================================================-->
-	<script src={% static 'quizportal/vendor/jquery/jquery-3.2.1.min.js' %}></script>
-	<!--===============================================================================================-->
-	<script src={% static 'quizportal/vendor/animsition/js/animsition.min.js' %}></script>
-	<!--===============================================================================================-->
-	<script src={% static 'quizportal/vendor/bootstrap/js/popper.js' %}></script>
-	<script src={% static 'quizportal/vendor/bootstrap/js/bootstrap.min.js' %}></script>
-	<!--===============================================================================================-->
-	<script src={% static 'quizportal/vendor/select2/select2.min.js' %}></script>
-	<!--===============================================================================================-->
-	<script src={% static 'quizportal/vendor/daterangepicker/moment.min.js' %}></script>
-	<script src={% static 'quizportal/vendor/daterangepicker/daterangepicker.js' %}></script>
-	<!--===============================================================================================-->
-	<script src={% static 'quizportal/vendor/countdowntime/countdowntime.js' %}></script>
-	<!--===============================================================================================-->
-	<script src={% static 'quizportal/js/main.js' %}></script>
-
 </body>
 
 </html>

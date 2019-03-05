@@ -13,6 +13,7 @@ class Section1(models.Model):
 		)
 	id_no=models.CharField(max_length=1000,primary_key=True)
 	question=models.TextField()
+	image=models.ImageField(upload_to='pictures', blank=True)
 	optionA=models.TextField()
 	optionB=models.TextField()
 	optionC=models.TextField()
@@ -29,6 +30,7 @@ class Section2(models.Model):
 		)
 	id_no=models.CharField(max_length=1000,primary_key=True)
 	question=models.TextField()
+	image=models.ImageField(upload_to='pictures', blank=True)
 	optionA=models.TextField()
 	optionB=models.TextField()
 	optionC=models.TextField()
@@ -45,6 +47,7 @@ class Section3(models.Model):
 		)
 	id_no=models.CharField(max_length=1000,primary_key=True)
 	question=models.TextField()
+	image=models.ImageField(upload_to='pictures', blank=True)
 	optionA=models.TextField()
 	optionB=models.TextField()
 	optionC=models.TextField()
@@ -54,6 +57,7 @@ class Section3(models.Model):
 
 #Time Interval Of Quiz
 class Time1(models.Model):
+	id_no=models.OneToOneField(User, on_delete=models.CASCADE,null=True)
 	start_time = models.DateTimeField(max_length=100, blank=False, default=now)
 	end_time = models.DateTimeField(max_length=100, blank=False, default=now)
 
@@ -62,6 +66,7 @@ class Time1(models.Model):
 
 #Time Interval Of Quiz
 class Time2(models.Model):
+	id_no=models.OneToOneField(User, on_delete=models.CASCADE,null=True)
 	start_time = models.DateTimeField(max_length=100, blank=False, default=now)
 	end_time = models.DateTimeField(max_length=100, blank=False, default=now)
 
@@ -70,6 +75,7 @@ class Time2(models.Model):
 
 #Time Interval Of Quiz
 class Time3(models.Model):
+	id_no=models.OneToOneField(User, on_delete=models.CASCADE,null=True)
 	start_time = models.DateTimeField(max_length=100, blank=False, default=now)
 	end_time = models.DateTimeField(max_length=100, blank=False, default=now)
 
@@ -110,4 +116,8 @@ class SolvedQ3(models.Model):
 	id_no=models.ForeignKey(User, on_delete=models.CASCADE)
 	q_id=models.ForeignKey(Section3, on_delete=models.CASCADE)
 	check=models.BooleanField(default=False)
+
+class Time(models.Model):
+	s_no=models.PositiveIntegerField()
+	time=models.TimeField()
 	

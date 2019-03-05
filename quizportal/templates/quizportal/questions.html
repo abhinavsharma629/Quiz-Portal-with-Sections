@@ -201,79 +201,87 @@
 		</style>
 	</head>
 
-	<body style="padding: 20px;">
-		<div class="container">
-			<ul style="display:none">
-			</ul>
-			<div id="tower">Time left = <span id="timer"></span></div>
-			<p id="timeleft" style="display:none;"></p>
-			<br>
-			<div class='container text-center'>
-				<h2><b>Section {{section_no}}</b></h2>
-			</div>
+	<body style="padding: 20px;" ondragstart="return false;" onselectstart="return false;"  oncontextmenu="return false;" onload="clearData();" onblur="clearData();>
+	<div class="container">
+		<ul style="display:none">
+		</ul>
+		<div id="tower">Time left = <span id="timer"></span></div>
+		<p id="timeleft" style="display:none;"></p>
+		<br>
+		<div class='container text-center'>
+			<h2><b>Section {{section_no}}</b></h2>
+		</div>
 
-			<div class="row" class="align-items-center" style="justify-content:center;margin-top:5%;">
-				<div class="col-sm-8">
-					{% for i in question %}
-					<div class="card-header text-white bg-info mb-3" style="text-align:left;">
-						<h3>{{i.id_no}} :- {{ i.question }}</h3>
+		<div class="row" class="align-items-center" style="justify-content:center;margin-top:5%;">
+			<div class="col-sm-8">
+				{% for i in question %}
+				<div class="card-header text-white bg-info mb-3" style="text-align:left;">
+					
+					{% if image1|length > 0 %}
+					<div class="container text-center">
+						<img class="card-img-top"  src="{{ i.image.url }}" style="width:400px;" style="height:400px;">
 					</div>
-					<div class="card">
-						<div class="card-body box-shadow"  name="user_choice" id="user_choice">
-							<h5 class="card-title"></h5>
-							<form method="post" action="{% url 'detail' section_no i.id_no|addition:1 %}">
-								<input type="hidden" name="quesid" value={{ i.id_no }} readonly>
-								{% csrf_token %}
-								<div class="form-check" style="margin-bottom:15px;">
-									<input class="form-check-input" type="radio" name="choice"  id="radio1" value="A" required>
-									<label class="form-check-label" for="radio1" style="padding:10px;">
-										{{ i.optionA }}
-									</label>
-								</div>
-								<div class="form-check" style="margin-bottom:15px;">
-									<input class="form-check-input" type="radio" name="choice"  id="radio2" value="B" >
-									<label class="form-check-label" for="radio2" style="padding:10px;">
-										{{ i.optionB }}
-									</label>
-								</div>
-								<div class="form-check" style="margin-bottom:15px;">
-									<input class="form-check-input" type="radio" name="choice"  id="radio3" value="C" >
-									<label class="form-check-label" for="radio3" style="padding:10px;">
-										{{ i.optionC}}
-									</label>
-								</div>
-								<div class="form-check" style="margin-bottom:15px;">
-									<input class="form-check-input" type="radio" name="choice"  id="radio4" value="D" >
-									<label class="form-check-label" for="radio4" style="padding:10px;">
-										{{ i.optionD }}
-									</label>
-								</div>
-								<div class="container">
-									<button type="submit" class="button" style="margin-top:25px;" ><b>Submit</b></button>
-								</div>
-							</form>
-						</div>
+					<br>
+					{% endif %}
+
+					<h3>{{i.id_no}} :- {{ i.question }}</h3>
+				</div>
+				<div class="card">
+					<div class="card-body box-shadow"  name="user_choice" id="user_choice">
+						<h5 class="card-title"></h5>
+						<form method="post" action="{% url 'detail' section_no i.id_no|addition:1 %}">
+							<input type="hidden" name="quesid" value={{ i.id_no }} readonly>
+							{% csrf_token %}
+							<div class="form-check" style="margin-bottom:15px;">
+								<input class="form-check-input" type="radio" name="choice"  id="radio1" value="A" required>
+								<label class="form-check-label" for="radio1" style="padding:10px;">
+									{{ i.optionA }}
+								</label>
+							</div>
+							<div class="form-check" style="margin-bottom:15px;">
+								<input class="form-check-input" type="radio" name="choice"  id="radio2" value="B" >
+								<label class="form-check-label" for="radio2" style="padding:10px;">
+									{{ i.optionB }}
+								</label>
+							</div>
+							<div class="form-check" style="margin-bottom:15px;">
+								<input class="form-check-input" type="radio" name="choice"  id="radio3" value="C" >
+								<label class="form-check-label" for="radio3" style="padding:10px;">
+									{{ i.optionC}}
+								</label>
+							</div>
+							<div class="form-check" style="margin-bottom:15px;">
+								<input class="form-check-input" type="radio" name="choice"  id="radio4" value="D" >
+								<label class="form-check-label" for="radio4" style="padding:10px;">
+									{{ i.optionD }}
+								</label>
+							</div>
+							<div class="container">
+								<button type="submit" class="button" style="margin-top:25px;" ><b>Submit</b></button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		<form method="POST" action="{% url 'score' section_no i.id_no %}">
-			{% csrf_token %}
-			<div class="container">
-				<button id="button" class="btn" ><b>Score</b></button>
-			</div>
-		</form>
-
+	</div>
+	<form method="POST" action="{% url 'score' section_no i.id_no %}">
+		{% csrf_token %}
 		<div class="container">
-			<button id="button" onclick="endsection()" class="btn1"><b>End Section</b></button>
+			<button id="button" class="btn" ><b>Score</b></button>
 		</div>
+	</form>
 
-		<!--JavaScript-->
-		<script type="text/javascript">
-			startTimer();
+	<div class="container">
+		<button id="button" onclick="endsection()" disabled class="btn1"><b>End Section</b></button>
+	</div>
 
-			function endsection() {
-				section="{{section_no}}" ;
+	<!--JavaScript-->
+	<script type="text/javascript">
+		startTimer();
+
+		function endsection() {
+			section="{{section_no}}" ;
 				//alert("Are You Sure You Want To End The Section"+" "+section+" "+"??");
 				
 				if (confirm("Are You Sure You Want To End The Section"+" "+section+" "+"??")) {
@@ -357,12 +365,31 @@
 					//location.reload(true);
 				}
 
-				var time=hours+ ":" + minutes + ":" + seconds;
+				
+				if(seconds==60)
+				{
+					var time=hours+ ":" + minutes + ":" + (seconds-1);
+				}
+				else
+				{
+					var time=hours+ ":" + minutes + ":" + seconds;
+				}
 				
 				document.getElementById('timer').innerHTML = time;
 				setTimeout(startTimer, 1000);
 			}
+
+			function clearData(){
+				window.clipboardData.setData('text','')
+			}
+			function cldata(){
+				if(clipboardData){
+					clipboardData.clearData();
+				}
+			}
+			setInterval("cldata();", 1000);
 		</script>
+		
 		
 		{% endfor %}
 	</body>
